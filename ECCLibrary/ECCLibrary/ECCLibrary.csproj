@@ -50,7 +50,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'SN1|AnyCPU'">
-		<PackageReference Include="Subnautica.GameLibs" Version="71288.0.0-r.0" />
+		<PackageReference Include="Subnautica.GameLibs" Version="82304.0.0-r.0" />
 		<PackageReference Include="Subnautica.Nautilus" Version="1.*-*" PrivateAssets="all" />
 	</ItemGroup>
 
