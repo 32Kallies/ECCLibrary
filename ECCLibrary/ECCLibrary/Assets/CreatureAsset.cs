@@ -220,23 +220,51 @@ public abstract class CreatureAsset
         }
         else
         {
-            // main sky applier
+            // Find world model
+            GameObject worldModel = null;
+            if (!string.IsNullOrEmpty(Template.PickupableFishData.WorldModelName))
+            {
+                worldModel = prefab.transform.Find(Template.PickupableFishData.WorldModelName).gameObject;
+            }
             
-            var worldModel = prefab.transform.Find(Template.PickupableFishData.WorldModelName)?.gameObject;
-            if (worldModel)
+            // Find view model
+            GameObject viewModel = null;
+            if (!string.IsNullOrEmpty(Template.PickupableFishData.ViewModelName))
+            {
+                viewModel = prefab.transform.Find(Template.PickupableFishData.ViewModelName).gameObject;
+            }
+
+            bool hasWorldModel = worldModel != null;
+            bool hasViewModel = viewModel != null;
+            
+            // Main sky applier (world model)
+            if (hasWorldModel)
             {
                 ccs.SkyApplier = worldModel.EnsureComponent<SkyApplier>();
                 ccs.SkyApplier.renderers = worldModel.GetComponentsInChildren<Renderer>(true);
                 ccs.SkyApplier.dynamic = true;
             }
             
-            // view model sky applier
-            var viewModel = prefab.transform.Find(Template.PickupableFishData.ViewModelName)?.gameObject;
-            if (viewModel)
+            // View model sky applier
+            if (hasViewModel)
             {
                 var viewModelSkyApplier = viewModel.EnsureComponent<SkyApplier>();
                 viewModelSkyApplier.renderers = viewModel.GetComponentsInChildren<Renderer>(true);
                 viewModelSkyApplier.dynamic = true;
+            }
+            
+            // Special case 1: Normal sky applier for whole model if no world model is found
+            if (!hasWorldModel && !hasViewModel)
+            {
+                ccs.SkyApplier = prefab.EnsureComponent<SkyApplier>();
+                ccs.SkyApplier.renderers = prefab.GetComponentsInChildren<Renderer>(true);
+                ccs.SkyApplier.dynamic = true;
+            }
+
+            // Special case 2 (PROBLEM): View model and no world model
+            if (hasViewModel && !hasWorldModel)
+            {
+                ECCPlugin.logger.LogWarning($"Creature '{PrefabInfo.TechType}' has a view model assigned but no world model");
             }
         }
 
