@@ -326,8 +326,11 @@ public abstract class CreatureAsset
             var animateByVelocityParent = prefab;
             if (Template.PickupableFishData != null)
             {
-                var worldModelTransform = prefab.transform.Find(Template.PickupableFishData.WorldModelName);
-                if (worldModelTransform != null) animateByVelocityParent = worldModelTransform.gameObject;
+                if (!string.IsNullOrEmpty(Template.PickupableFishData.WorldModelName))
+                {
+                    var worldModelTransform = prefab.transform.Find(Template.PickupableFishData.WorldModelName);
+                    if (worldModelTransform != null) animateByVelocityParent = worldModelTransform.gameObject;
+                }
             }
 
             ccs.AnimateByVelocity = CreaturePrefabUtils.AddAnimateByVelocity(prefab, animateByVelocityParent,
