@@ -148,6 +148,7 @@ public static partial class CreaturePrefabUtils
         component.scanRadius = data.scanRadius;
         component.swimVelocity = data.swimVelocity;
         component.swimInterval = 1f;
+        component.minActionCheckInterval = 3; // this is crucial to update frequently enough
         return component;
     }
 
@@ -160,6 +161,7 @@ public static partial class CreaturePrefabUtils
         component.swimVelocity = data.swimVelocity;
         component.scanDistance = data.scanDistance;
         component.avoidanceIterations = data.avoidanceIterations;
+        component.minActionCheckInterval = 2;
         return component;
     }
 
@@ -200,6 +202,7 @@ public static partial class CreaturePrefabUtils
         component.rememberTargetTime = data.rememberTargetTime;
         component.resetAggressionOnTime = data.resetAggressionOnTime;
         component.lastTarget = lastTarget;
+        component.minActionCheckInterval = 3;
         return component;
     }
 
@@ -218,6 +221,7 @@ public static partial class CreaturePrefabUtils
 #elif BELOWZERO
         component.aggressiveToNoise = new CreatureTrait { falloff = data.aggressionFalloff };
 #endif
+        component.minActionCheckInterval = 2;
         return component;
     }
 
