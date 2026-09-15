@@ -39,24 +39,12 @@ public partial class CreatureAsset
     /// <summary>
     /// The ClassID of this creature, sourced from the PrefabInfo property.
     /// </summary>
-    public string ClassID
-    {
-        get
-        {
-            return PrefabInfo.ClassID;
-        }
-    }
+    public string ClassID => PrefabInfo.ClassID;
 
     /// <summary>
     /// The TechType of this creature, sourced from the PrefabInfo property.
     /// </summary>
-    public TechType TechType
-    {
-        get
-        {
-            return PrefabInfo.TechType;
-        }
-    }
+    public TechType TechType => PrefabInfo.TechType;
 
     /// <summary>
     /// The EntityInfo for this creature, only assigned <i>after</i> <see cref="Register"/> is called.
