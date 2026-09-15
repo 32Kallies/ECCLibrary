@@ -5,7 +5,7 @@ namespace ECCLibrary;
 
 public abstract partial class CreatureAsset
 {
-    private IEnumerator GetGameObject(IOut<GameObject> gameObject)
+    private partial IEnumerator GetGameObject(IOut<GameObject> gameObject)
     {
         if (!ObjectReferences.Done)
         {
@@ -41,7 +41,7 @@ public abstract partial class CreatureAsset
         gameObject.Set(prefab);
     }
     
-    private IEnumerator ModifyPrefabAsync(GameObject prefab)
+    private partial IEnumerator ModifyPrefabAsync(GameObject prefab)
     {
         if (!ObjectReferences.Done)
         {
@@ -55,7 +55,7 @@ public abstract partial class CreatureAsset
         ApplyMaterials(prefab);
     }
     
-    private CreatureComponents AddComponents(GameObject prefab)
+    private partial CreatureComponents AddComponents(GameObject prefab)
     {
         CreatureComponents ccs = new();
 

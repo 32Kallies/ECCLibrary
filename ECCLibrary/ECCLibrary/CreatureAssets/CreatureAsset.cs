@@ -28,8 +28,7 @@ public partial class CreatureAsset
     /// Instantiates a Creature Asset with the given PrefabInfo. Call the Register method to add the creature to the game.
     /// </summary>
     /// <param name="prefabInfo">
-    /// <para>Information required for spawning. Must be unique.</para>
-    /// <para>An instance of this struct can be easily created by calling <see cref="PrefabInfo.WithTechType"/>.</para></param>
+    /// <para>Information required for spawning. The ClassID must be unique.</para></param>
     public CreatureAsset(PrefabInfo prefabInfo)
     {
         PrefabInfo = prefabInfo;
@@ -146,4 +145,8 @@ public partial class CreatureAsset
     {
         MaterialUtils.ApplySNShaders(prefab);
     }
+
+    private partial IEnumerator GetGameObject(IOut<GameObject> gameObject);
+    private partial IEnumerator ModifyPrefabAsync(GameObject prefab);
+    private partial CreatureComponents AddComponents(GameObject prefab);
 }
