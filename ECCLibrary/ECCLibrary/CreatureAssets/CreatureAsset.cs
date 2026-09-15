@@ -89,7 +89,8 @@ public partial class CreatureAsset
         var registeringTechTypeForFirstTime = SanityChecking.TryRegisterTechTypeForFirstTime(TechType); 
         if (!registeringTechTypeForFirstTime)
         {
-            ECCPlugin.logger.LogWarning($"Registering multiple creatures with the same TechType ('{TechType}')! The new Creature Template of Class ID '{ClassID}' will NOT override any previously defined settings.");
+            ECCPlugin.logger.LogWarning($"Registering multiple creatures with the same TechType ('{TechType}')! " +
+                                        $"The new creature of Class ID '{ClassID}' will NOT override any TechType-specific data.");
         }
 
         // Assign patch-time data
