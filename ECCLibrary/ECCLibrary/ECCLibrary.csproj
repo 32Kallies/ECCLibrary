@@ -12,6 +12,7 @@
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<Configurations>SN1;BZ</Configurations>
 		<Platforms>AnyCPU</Platforms>
+		<Version>2.2.4</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SN1|AnyCPU'">
