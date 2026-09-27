@@ -113,7 +113,11 @@ public partial class CreatureAsset
     {
         if (Template.AcidImmune) CreatureDataUtils.SetAcidImmune(TechType);
         if (Template.BioReactorCharge > 0f) CreatureDataUtils.SetBioreactorCharge(TechType, Template.BioReactorCharge);
-        if (Template.PickupableFishData != null && Template.PickupableFishData.CanBeHeld) CraftDataHandler.SetEquipmentType(TechType, EquipmentType.Hand);
+        if (Template.PickupableFishData != null)
+        {
+            if (Template.PickupableFishData.AffectedByGravTrap) GravSphereHandler.AddAffectedTechType(TechType);
+            if (Template.PickupableFishData.CanBeHeld) CraftDataHandler.SetEquipmentType(TechType, EquipmentType.Hand);
+        }
         CreatureDataUtils.SetBehaviorType(TechType, Template.BehaviourType);
         CreatureDataUtils.SetItemSounds(TechType, Template.ItemSoundsType);
     }

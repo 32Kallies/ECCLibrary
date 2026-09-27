@@ -26,6 +26,11 @@ public class PickupableFishData
     public string ViewModelName;
 
     /// <summary>
+    /// If <c>true</c>, this pickupable creature will be allowed to be grabbed up by the Grav Trap. 
+    /// </summary>
+    public bool AffectedByGravTrap { get; set; } = true;
+
+    /// <summary>
     /// This constructor overload creates a <see cref="PickupableFishData"/> instance for creatures that can be picked up but NOT held.
     /// </summary>
     public PickupableFishData() { }
