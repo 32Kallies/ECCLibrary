@@ -21,6 +21,8 @@ public static class CookedCreatureHandler
         prefab.SetPdaGroupCategory(TechGroup.Survival, category);
         prefab.SetGameObject(new CookedCreatureTemplate(prefabInfo, creatureModel, edibleData, vfxFabricatingSettings));
         prefab.Register();
+        
+        GravSphereHandler.AddAffectedTechType(prefabInfo.TechType);
     }
 
     /// <summary>
