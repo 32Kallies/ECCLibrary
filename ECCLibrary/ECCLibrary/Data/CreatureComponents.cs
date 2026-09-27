@@ -1,7 +1,7 @@
 ﻿namespace ECCLibrary.Data;
 
 /// <summary>
-/// Stores references to the basic components of a creature. Each field should not be expected to be assigned.
+/// Holds references to many common components used by creatures. Some properties will be unassigned/null.
 /// </summary>
 public struct CreatureComponents
 {

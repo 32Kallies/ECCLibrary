@@ -5,12 +5,12 @@ using System;
 namespace ECCLibrary;
 
 /// <summary>
-/// Utility methods related to constructing a creature prefab GameObject.
+/// Utility methods to help with constructing a creature prefab.
 /// </summary>
 public static partial class CreaturePrefabUtils
 {
     /// <summary>
-    /// Makes a given GameObject scannable with the scanner room, using the <see cref="ResourceTracker"/> component.
+    /// Makes a given GameObject scannable with the Scanner Room by adding the <see cref="ResourceTracker"/> component.
     /// </summary>
     /// <param name="gameObject"></param>
     /// <param name="updatePositionPeriodically">Whether to automatically update the position of this ResourceTracker or not (should always be true for creatures).</param>
@@ -26,7 +26,7 @@ public static partial class CreaturePrefabUtils
     }
 
     /// <summary>
-    /// Multiplies damage of the given <paramref name="type"/> by <paramref name="multiplier"/>.
+    /// Multiplies incoming damage of the given DamageType <paramref name="type"/> by <paramref name="multiplier"/>.
     /// </summary>
     public static DamageModifier AddDamageModifier(GameObject creature, DamageType type, float multiplier)
     {
@@ -37,7 +37,8 @@ public static partial class CreaturePrefabUtils
     }
 
     /// <summary>
-    /// Adds the <see cref="VFXFabricating"/> component onto a prefab to enable its model in the Fabricator. Automatically determines settings if <paramref name="data"/> is null.
+    /// Adds the <see cref="VFXFabricating"/> component onto a prefab to set up a model for when it is crafted in the Fabricator.
+    /// This utility attempts to automatically determine settings when <paramref name="data"/> is null.
     /// </summary>
     public static VFXFabricating AddVFXFabricating(GameObject creature, VFXFabricatingData data)
     {
@@ -77,7 +78,7 @@ public static partial class CreaturePrefabUtils
     }
 
     /// <summary>
-    /// Adds the <see cref="Eatable"/> [sic] component to the given GameObject.
+    /// Adds the <see cref="Eatable"/> component to the given GameObject.
     /// </summary>
     public static Eatable AddEatable(GameObject prefab, EdibleData data)
     {
@@ -227,7 +228,7 @@ public static partial class CreaturePrefabUtils
     }
 
     /// <summary>
-    /// Assigns the essential fields of any sort of MeleeAttack component. For anything else, you're on your own.
+    /// Assigns the essential fields of any sort of MeleeAttack component. This utility does not cover all possible features.
     /// </summary>
     /// <typeparam name="T">Type which must be the same as or inherit from MeleeAttack.</typeparam>
     /// <param name="creature">The creature prefab root.</param>
@@ -237,7 +238,7 @@ public static partial class CreaturePrefabUtils
     /// <param name="damage">Bite damage.</param>
     /// <param name="interval">Seconds between each bite.</param>
     /// <param name="canBiteVehicle">If false, this creature is unable to attack the Seamoth and PRAWN Suit.</param>
-    /// <returns></returns>
+    /// <returns>The newly added instance of the component.</returns>
     public static T AddMeleeAttack<T>(GameObject creature, CreatureComponents components, GameObject mouth, bool automaticallyAddOnTouchCallback, float damage, float interval = 1f, bool canBiteVehicle = true) where T : MeleeAttack
     {
         var meleeAttack = creature.AddComponent<T>();
