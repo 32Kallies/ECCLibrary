@@ -10,7 +10,7 @@ internal class ExampleLeviathan : CreatureAsset
 
     protected override CreatureTemplate CreateTemplate()
     {
-        var template = new CreatureTemplate(GetModel(), BehaviourType.Leviathan, EcoTargetType.Leviathan, 600f)
+        var template = new CreatureTemplate(GetModel, BehaviourType.Leviathan, EcoTargetType.Leviathan, 600f)
         {
             CellLevel = LargeWorldEntity.CellLevel.Far,
             SwimRandomData = new SwimRandomData(0.2f, 10, new Vector3(30, 10, 30), 4f, 1f, true),

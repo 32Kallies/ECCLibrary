@@ -12,7 +12,7 @@ internal class ExampleCreature : CreatureAsset
     // This is the most essential part of creating your creature. This is where you set all required and optional properties.
     protected override CreatureTemplate CreateTemplate()
     {
-        var template = new CreatureTemplate(GetModel(), BehaviourType.SmallFish, EcoTargetType.SmallFish, 160f);
+        var template = new CreatureTemplate(GetModel, BehaviourType.SmallFish, EcoTargetType.SmallFish, 160f);
         CreatureTemplateUtils.SetCreatureDataEssentials(template, LargeWorldEntity.CellLevel.Medium, 50f);
         CreatureTemplateUtils.SetCreatureMotionEssentials(template, new SwimRandomData(0.2f, 3f, new Vector3(20, 5, 20)), new StayAtLeashData(0.6f, 6f, 14f));
         CreatureTemplateUtils.SetPreyEssentials(template, 5f, new PickupableFishData(TechType.Peeper, "WM", "VM"), new EdibleData(69f, 1337f, false, 2f));

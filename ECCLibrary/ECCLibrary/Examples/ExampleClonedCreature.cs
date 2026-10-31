@@ -11,7 +11,9 @@ internal class ExampleClonedCreature : CreatureAsset
     protected override CreatureTemplate CreateTemplate()
     {
         var template = new CreatureTemplate(TechType.Boomerang, 420);
-        CreatureTemplateUtils.SetPreyEssentials(template, 4.20f, new PickupableFishData(TechType.Boomerang, null, null), new EdibleData(6f, 9f, false));
+        CreatureTemplateUtils.SetPreyEssentials(template, 4.20f,
+            new PickupableFishData(TechType.Boomerang, null, null),
+            new EdibleData(6f, 9f, false));
 
         return template;
     }
@@ -22,7 +24,8 @@ internal class ExampleClonedCreature : CreatureAsset
         {
             foreach (var material in renderer.materials)
             {
-                material.color = Color.green;
+                material.color = Color.red;
+                material.SetColor("_SpecColor", Color.red);
             }
         }
         

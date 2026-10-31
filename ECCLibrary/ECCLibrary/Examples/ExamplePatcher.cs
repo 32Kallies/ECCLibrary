@@ -15,10 +15,8 @@ internal static class ExamplePatcher
         exampleCreature.Register();
         CreatureDataUtils.AddCreaturePDAEncyclopediaEntry(exampleCreature, "Lifeforms/Fauna/Herbivores", "Example", "Cool lol", 6, null, null);
 
-        /*
         var exampleClonedCreature = new ExampleClonedCreature(PrefabInfo.WithTechType("ExampleClonedCreature", "Example Cloned Creature", "Example Cloned Creature that makes me go yes."));
         exampleClonedCreature.Register();
-        */
 
         var exampleLeviathan = new ExampleLeviathan(PrefabInfo.WithTechType("ExampleLeviathan", "Example Leviathan", "An example of a Leviathan."));
         exampleLeviathan.Register();
